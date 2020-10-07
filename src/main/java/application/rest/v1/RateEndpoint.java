@@ -27,7 +27,7 @@ public class RateEndpoint {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   public Response rateBook(@PathParam("id") int id, @FormParam("rating") int rating) {
-    System.out.println("Rating endpoint - id: " + id + ", rating: " + rating);
+    System.out.println("Rating endpoint - media type - " + MediaType.APPLICATION_FORM_URLENCODED + " - id: " + id + ", rating: " + rating);
 
     SongsMetrics.requests.labels("/rate").inc();
 
@@ -66,7 +66,7 @@ public class RateEndpoint {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public Response rateBook(@PathParam("id") int id, SongRating songRating) {
-    System.out.println("Rating endpoint - id: " + id + ", rating: " + songRating.getRating());
+    System.out.println("Rating endpoint - media type - " + MediaType.APPLICATION_JSON + " - id: " + id + ", rating: " + songRating.getRating());
 
     SongsMetrics.requests.labels("/rate").inc();
 
