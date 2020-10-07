@@ -1,12 +1,11 @@
 # The IBM version of this configuration
 version : 0.0.3
-ibm-cloud-app-id : "02265e84-d047-4910-b823-9082cc394689"
 
 # The container name used for the run container
-container-name-run : "javalibertyappsample"
+container-name-run : "edgejavareactsongsbackend"
 
 # The container name used for the tools container
-container-name-tools : "bx-dev-javalibertyappsample-tools"
+container-name-tools : "bx-dev-edgejavareactsongsbackend-tools"
 
 # The project root in the run container to mount to host-path-run
 container-path-run : "/project"
@@ -19,8 +18,7 @@ dockerfile-run : "Dockerfile"
 dockerfile-tools : "Dockerfile-tools"
 
 # The name of image to create from dockerfile-run
-image-name-run : "javalibertyappsample"
-
+image-name-run : "edgejavareactsongsbackend"
 # The name of image to create from dockerfile-tools
 image-name-tools : "bx-dev-java-maven-tools"
 
@@ -40,12 +38,13 @@ build-cmd-debug : "mvn install -Dmaven.repo.local=/project/.m2/repository -Pbx-d
 debug-cmd : "server debug"
 
 # The port mappings between the host and the container in the form [host:container]
-container-port-map : "9080:9080,9444:9444"
+container-port-map : "9080:9080,9443:9443"
 
 # The port mappings between the host and the container for the debug port in the form [host:container]
 container-port-map-debug : "7777:7777"
 
 # The relative path to the helm chart used for Kubernetes deployment
-chart-path : "chart/javalibertyappsample"
-
-credentials-filepath : ""
+chart-path : "chart/edgejavareactsongsbackend"
+ibm-generated-id : "32ef0c79-5dba-4132-b80c-966eaa1f226c"
+ibm-cloud-app-id : "2dc6cfb0-c440-458d-a113-4f7528bf4e9f"
+credentials-filepath : "src/main/liberty/config/server.env, src/main/resources/localdev-config.json"
