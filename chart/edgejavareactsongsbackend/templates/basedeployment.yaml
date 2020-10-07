@@ -1,5 +1,5 @@
 {{ if .Values.base.enabled }}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{  .Chart.Name }}-basedeployment"
@@ -7,6 +7,15 @@ metadata:
     chart: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
 spec:
   replicas: {{ .Values.base.replicaCount }}
+  selector: 
+    matchLabels:
+      app: "{{  .Chart.Name }}"
+      version: "current"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   template:
     metadata:
@@ -22,7 +31,7 @@ spec:
 {{ else }}
         readinessProbe:
           httpGet:
-            path: /health
+            path: /java_sample/health
             port: 9080
           initialDelaySeconds: 20
 {{ end }}
