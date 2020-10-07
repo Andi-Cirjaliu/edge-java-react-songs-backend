@@ -10,20 +10,17 @@ import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import application.metrics.SongsMetrics;
-
 @Path("/health")
 public class HealthEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response healthcheck() {
-      //TODO We could check if the application is right
       boolean healthy = true;
 
       System.out.println("Health endpoint");
 
-      SongsMetrics.requests.labels("/health").inc();
+      // SongsMetrics.requests.labels("/health").inc();
 
       JsonObject resp = new JsonObject();
       resp.addProperty("status", healthy? "UP" : "DOWN");

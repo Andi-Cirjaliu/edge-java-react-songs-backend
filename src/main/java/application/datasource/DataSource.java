@@ -75,6 +75,78 @@ public class DataSource {
         return song;
     }
 
+    public Song findMostVotedSong() {
+        List<Song> list = this.songs;
+
+        Song song = null;
+        int maxVotes = 0;
+
+        for(Song s: list){
+            if ( s.getRatingCount() > maxVotes ) {
+                song = s;
+                maxVotes = s.getRatingCount();
+            }
+        }
+
+        System.out.println("Most voted song: "+ song);
+
+        return song;
+    }
+
+    public Song findLeastVotedSong() {
+        List<Song> list = this.songs;
+
+        Song song = null;
+        int minVotes = 10000000;
+
+        for(Song s: list){
+            if ( s.getRatingCount() < minVotes ) {
+                song = s;
+                minVotes = s.getRatingCount();
+            }
+        }
+
+        System.out.println("Least voted song: "+ song);
+
+        return song;
+    }
+
+    public Song findBestRatedSong() {
+        List<Song> list = this.songs;
+
+        Song song = null;
+        double maxRating = 0;
+
+        for(Song s: list){
+            if ( s.getRating() > maxRating ) {
+                song = s;
+                maxRating = s.getRating();
+            }
+        }
+
+        System.out.println("Best rated song: "+ song);
+
+        return song;
+    }
+
+    public Song findLowestRatedSong() {
+        List<Song> list = this.songs;
+
+        Song song = null;
+        double minRating = 10;
+
+        for(Song s: list){
+            if ( s.getRating() < minRating ) {
+                song = s;
+                minRating = s.getRating();
+            }
+        }
+
+        System.out.println("Lowest rated song: "+ song);
+
+        return song;
+    }
+
     public static void main(String[] args) {
         Gson gson = new Gson();
 

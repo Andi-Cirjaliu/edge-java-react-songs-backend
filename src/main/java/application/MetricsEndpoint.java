@@ -9,14 +9,11 @@ import java.util.Enumeration;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-//import javax.ws.rs.core.Application;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import application.datasource.DataSource;
 import application.metrics.SongsMetrics;
-import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Collector.MetricFamilySamples;
+import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.common.TextFormat;
 
 @Path("/metrics")

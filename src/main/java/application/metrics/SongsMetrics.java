@@ -10,9 +10,17 @@ public class SongsMetrics {
 
     public static void collectSongsStatistics() {
         songsStatistics.labels("total_songs").set(DataSource.getInstance().fetchAllSongs().size());
-        songsStatistics.labels("most_voted_song").set(1);
-        songsStatistics.labels("least_voted_song").set(1);
-        songsStatistics.labels("best_rated_song").set(1);
-        songsStatistics.labels("lowest_rated_song").set(1);
+
+        songsStatistics.labels("most_voted_song").set(DataSource.getInstance().findMostVotedSong().getId());
+        songsStatistics.labels("max_votes_song").set(DataSource.getInstance().findMostVotedSong().getRatingCount());
+
+        songsStatistics.labels("least_voted_song").set(DataSource.getInstance().findLeastVotedSong().getId());
+        songsStatistics.labels("min_votes_song").set(DataSource.getInstance().findLeastVotedSong().getRatingCount());
+
+        songsStatistics.labels("best_rated_song").set(DataSource.getInstance().findBestRatedSong().getId());
+        songsStatistics.labels("max_rating_song").set(DataSource.getInstance().findBestRatedSong().getRating());
+
+        songsStatistics.labels("lowest_rated_song").set(DataSource.getInstance().findLowestRatedSong().getId());
+        songsStatistics.labels("min_rating_song").set(DataSource.getInstance().findLowestRatedSong().getRating());
     }
 }
